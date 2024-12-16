@@ -33,7 +33,7 @@ fn main() {
         let letter: char = 'd';
         println!("First letter in my name is: {}", letter);
     }
-    primitive_data_types();
+    // primitive_data_types();
 
     fn compound_data_types() {
         // Arrays, Tuples, Slices, Strings (slice strings)
@@ -80,7 +80,7 @@ fn main() {
         let slice: &str = &string[0..5];
         println!("Slice value: {}", slice);
     }
-    compound_data_types();
+    // compound_data_types();
 
     fn functions() {
         fn human_id(name: &str, age: u32, height: u32) {
@@ -91,7 +91,7 @@ fn main() {
         }
         human_id("Dakota", 33, 72);
     }
-    functions();
+    // functions();
 
     fn expressions_and_statements() {
         // Expression: Anything that returns a value
@@ -118,7 +118,7 @@ fn main() {
 
         println!("The calculated BMI is {:.2}", calculate_bmi(2.0, 90.25));
     }
-    expressions_and_statements();
+    // expressions_and_statements();
 
     fn error_handling() {
         // Error handling with `Option<T>`
@@ -151,7 +151,7 @@ fn main() {
             Err(err) => println!("Error: {}", err),
         }
     }
-    error_handling();
+    // error_handling();
 
     fn vectors() {
         // Vectors, UTF8, Hash Maps
@@ -181,7 +181,7 @@ fn main() {
             None => println!("There is no third element."),
         }
     }
-    vectors();
+    // vectors();
 
     fn utf8_encoding() {
         // Different ways to defined Strings
@@ -206,7 +206,7 @@ fn main() {
         let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used.
         println!("{s3}");
     }
-    utf8_encoding();
+    // utf8_encoding();
 
     fn hash_maps() {
         // Collection of Key -> Value pairs
@@ -223,5 +223,57 @@ fn main() {
             println!("{key}: {value}");
         }
     }
-    hash_maps();
+    // hash_maps();
+
+    fn structs() {
+        struct User {
+            active: bool,
+            username: String,
+            email: String,
+            sign_in_count: u64,
+        }
+
+        let user1 = User {
+            active: true,
+            username: String::from("someusername123"),
+            email: String::from("someone@example.com"),
+            sign_in_count: 1,
+        };
+
+        let mut user2 = User {
+            active: true,
+            username: String::from("someusername123"),
+            email: String::from("someone@example.com"),
+            sign_in_count: 1,
+        };
+
+        println!("User2.email: {}", user2.email);
+        user2.email = String::from("anotheremail@example.com");
+        println!("User2.email: {}", user2.email);
+
+        fn build_user(email: String, username: String) -> User {
+            User {
+                active: true,
+                username,
+                email,
+                sign_in_count: 1,
+            }
+        }
+
+        let user3 = build_user(
+            "fakeEmail@example.com".to_string(),
+            "someMadeUpUsername".to_string(),
+        );
+
+        let user4 = User {
+            email: String::from("another@example.com"),
+            ..user1
+        };
+
+        struct Color(i32, i32, i32);
+        struct Point(i32, i32, i32);
+        let black = Color(0, 0, 0);
+        let origin = Point(0, 0, 0);
+    }
+    // structs()
 }
