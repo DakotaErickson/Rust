@@ -276,4 +276,53 @@ fn main() {
         let origin = Point(0, 0, 0);
     }
     // structs()
+
+    fn enums() {
+        // A versatile tool used to represent a type that can take on one of several possible variants
+        enum IpAddrKind {
+            V4,
+            V6,
+        }
+        let four = IpAddrKind::V4;
+        let six = IpAddrKind::V6;
+
+        // the type can be passed into a function
+        fn route(ip_kind: IpAddrKind) {}
+        route(IpAddrKind::V4);
+
+        // Using structs
+        struct IpAddr {
+            kind: IpAddrKind,
+            address: String,
+        }
+
+        let home = IpAddr {
+            kind: IpAddrKind::V4,
+            address: "127.0.0.1".to_string(),
+        };
+
+        let loopback = IpAddr {
+            kind: IpAddrKind::V6,
+            address: "::1".to_string(),
+        };
+
+        // Storing directly in Enum variants
+        enum IpAddrWithData {
+            V4(String),
+            V6(String),
+        }
+
+        let home = IpAddrWithData::V4(String::from("127.0.0.1"));
+        let loopback = IpAddrWithData::V6(String::from("::1"));
+
+        // Enhanced Enums
+        enum EnhancedIpAddr {
+            V4(u8, u8, u8, u8),
+            V6(String),
+        }
+
+        let home = EnhancedIpAddr::V4(127, 0, 0, 1);
+        let loopback: EnhancedIpAddr = EnhancedIpAddr::V6("::1".to_string());
+    }
+    enums()
 }
